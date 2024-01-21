@@ -1,0 +1,52 @@
+{%load static%}
+<!doctype html5>
+<html>
+<head>
+	<link rel=stylesheet href='https://gist.githack.com/cluster-coder/5e288457051be496bf7b2a464a25a20c/raw/06e3d6d6304165f3fc5a8d9b0ec07e93ff8a775a/Trying%20to%20beautify.css'>
+	<script src='https://gist.githack.com/cluster-coder/67555132d191ce0eed01783615c72ca5/raw/f66a669ca138479e0e6d56def76da22449e49c90/scroller.js' defer ></script>
+	<script src='https://gist.githack.com/cluster-coder/726024bbb5d199ab1208f16143f943b2/raw/1502073353f4aeaf92648ca77c45227d1ac1d528/javascript_introduced.js' defer ></script>
+	<script src='https://gist.githack.com/cluster-coder/79df9c73b860e19a0716059c9ca9b53e/raw/3e00d34e6c593c889db2be89880c5ed634c453d3/EaseInOutArray.js' defer ></script>
+	{%if additionalCss%}
+	<link rel='stylesheet' href='{{additionalCss}}' id='{{word}}Styles'>
+	{%endif%}
+	{%if multiplechoices%}
+	<script>
+		{%autoescape off%}
+		contexto={{deepCopy}}
+		{%endautoescape%}
+	</script>
+	{%else%}
+	<script>
+		{%autoescape off%}
+		contexto={}
+		contexto["additionalCss"]={{additionalCss}}
+		contexto["word"]='{{word}}'
+		{%endautoescape%}
+	</script>
+	{%endif%}
+</head>
+
+<body>
+	<div class='header {{c0.headerClass}}'>
+		<img class='icon {{c0.iconClass}}' src='{{c0.iconSrc}}'>
+	<img class='backIcon' src=''>
+	</div>
+
+	<div class='wolf {{c0.realwolfClass}}'>
+		<h1 class=the_loner {{c0.wolfClass}}>{{c0.wolfText}}</h1>
+	</div>
+
+	<div class='choices {{c0.choicesClass}}'>
+		{%if multiplechoices%}
+		{%for v in timeReveals%}
+	<div class='time_option {{v.timeoptionClass}}'>{{v.timeoptionText}}</div>
+		{%endfor%}{%endif%}
+	</div>
+
+	<div class='TellStory {{c0.tellstoryClass}}'>
+		<p>{{c0.tellstoryText}}</p>
+	</div>
+
+testing if works
+</body>
+</html>
